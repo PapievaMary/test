@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Place;
+use App\Models\Thing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +14,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
+});
+*/
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/about', function () {
+    return view('main/about');
+});
+
+Route::get('/things', function(){
+    return view('things.things', [
+        'heading'=> 'Things list',
+        'things'=> Thing::all()
+        ]);
+});
+
+Route::get('/places', function(){
+    return view('places.places', [
+        'heading'=> 'Places list',
+        'places'=> Place::all()
+        ]);
 });
